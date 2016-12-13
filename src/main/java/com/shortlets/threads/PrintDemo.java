@@ -12,7 +12,7 @@ package com.shortlets.threads;
 public class PrintDemo {
     public void printCount(){
         try{
-            for(int i =5; i>0;i++){
+            for(int i =5; i>0;i--){
                 System.out.println(" Selected number is: " +i);
             }
         }catch(Exception e){

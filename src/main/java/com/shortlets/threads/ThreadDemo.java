@@ -12,11 +12,27 @@ package com.shortlets.threads;
 public class ThreadDemo implements Runnable{
     private Thread thread;
     private String threadName;
-    
+    PrintDemo printDemo;
 
+    public ThreadDemo(String threadName, PrintDemo printDemo  ) {
+        this.printDemo = printDemo;
+        this.threadName = threadName;
+    }
+    
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        synchronized(printDemo){
+            printDemo.printCount();
+        }
+        System.out.println("Thread" +threadName+" finishing");
+    }
+    
+    public void start(){
+        System.err.println("Starting "+ threadName);
+        if(thread == null){
+            thread = new Thread(this,threadName);
+        }
+        thread.start();
     }
     
 }
